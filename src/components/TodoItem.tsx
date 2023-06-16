@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import ButtonWithIcon from "./ButtonWithIcon";
+import { ButtonWithIcon } from "./ButtonWithIcon";
 
 type TodoItemProps = {
   id: string;
@@ -13,7 +13,7 @@ type TodoItemProps = {
 export function TodoItem({ id, title, complete, toggleTodo }: TodoItemProps) {
   return (
     <li className="flex gap-1 items-center">
-      <ButtonWithIcon></ButtonWithIcon>
+      <ButtonWithIcon id={id}></ButtonWithIcon>
       <input
         id={id}
         type="checkbox"

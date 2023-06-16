@@ -1,16 +1,15 @@
-import { FC } from "react";
+import { handleDelete } from "../ClientFunctions";
 
-const ButtonWithIcon: FC = () => {
-  const handleClick = () => {
-    // Handle the click event here
-    console.log("Button clicked!");
-  };
+type ButtonWithIconProps = {
+  id: string;
+};
 
+export function ButtonWithIcon({ id }: ButtonWithIconProps) {
   return (
     <div className="p-2">
       <button
-        className="flex items-center justify-center border border-gray-400 rounded hover:bg-gray-100 focus:outline-none"
-        onClick={handleClick}
+        className="flex items-center justify-center border-none border-slate-400 rounded hover:bg-slate-700 focus:outline-none"
+        onClick={() => handleDelete(id)}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -29,6 +28,4 @@ const ButtonWithIcon: FC = () => {
       </button>
     </div>
   );
-};
-
-export default ButtonWithIcon;
+}
