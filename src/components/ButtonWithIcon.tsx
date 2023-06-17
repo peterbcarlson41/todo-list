@@ -1,15 +1,22 @@
-import { handleDelete } from "../ClientFunctions";
-
 type ButtonWithIconProps = {
   id: string;
+  hideTodo: (id: string) => void;
+  deleteTodo: (id: string) => void;
 };
 
-export function ButtonWithIcon({ id }: ButtonWithIconProps) {
+export function ButtonWithIcon({
+  id,
+  hideTodo,
+  deleteTodo,
+}: ButtonWithIconProps) {
   return (
     <div className="p-2">
       <button
         className="flex items-center justify-center border-none border-slate-400 rounded hover:bg-slate-700 focus:outline-none"
-        onClick={() => handleDelete(id)}
+        onClick={(e) => {
+          hideTodo(id);
+          deleteTodo(id);
+        }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

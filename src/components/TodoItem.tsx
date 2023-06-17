@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { useState } from "react";
 import { ButtonWithIcon } from "./ButtonWithIcon";
 
 type TodoItemProps = {
@@ -8,12 +8,29 @@ type TodoItemProps = {
   title: string;
   complete: boolean;
   toggleTodo: (id: string, complete: boolean) => void;
+  deleteTodo: (id: string) => void;
 };
 
-export function TodoItem({ id, title, complete, toggleTodo }: TodoItemProps) {
+export function TodoItem({
+  id,
+  title,
+  complete,
+  toggleTodo,
+  deleteTodo,
+}: TodoItemProps) {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(true);
+  };
+
+  if (isClicked) {
+    return null; // Render nothing when clicked
+  }
+
   return (
     <li className="flex gap-1 items-center">
-      <ButtonWithIcon id={id}></ButtonWithIcon>
+      <ButtonWithIcon id={id} hideTodo={handleClick} deleteTodo={deleteTodo} />
       <input
         id={id}
         type="checkbox"
