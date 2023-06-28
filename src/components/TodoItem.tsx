@@ -1,23 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { ButtonWithIcon } from "./ButtonWithIcon";
 
 type TodoItemProps = {
   id: string;
   title: string;
   complete: boolean;
   toggleTodo: (id: string, complete: boolean) => void;
-  deleteTodo: (id: string) => void;
 };
 
-export function TodoItem({
-  id,
-  title,
-  complete,
-  toggleTodo,
-  deleteTodo,
-}: TodoItemProps) {
+export function TodoItem({ id, title, complete, toggleTodo }: TodoItemProps) {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
@@ -30,7 +22,6 @@ export function TodoItem({
 
   return (
     <li className="flex gap-1 items-center">
-      <ButtonWithIcon id={id} hideTodo={handleClick} deleteTodo={deleteTodo} />
       <input
         id={id}
         type="checkbox"
